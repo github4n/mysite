@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="斜杠青年">
+    <meta name="author" content="xlye">
+    <title>斜杠青年</title>
+    <!-- 包含头部信息用于适应不同设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 包含 bootstrap 样式表 -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/global.css' %}" />
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style>  
+      .img-width3{
+          width:40px;
+      }
+      .img-height3{
+          height:40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Fixed navbar -->
+    {% include "mysite/nav.html" %}
+    <div class="container">
+      <div class="jumbotron" id="info" style="background-color:#ff0000;">
+        <p style="color:#ffffff;">{{ respmsg }}</p> 
+      </div>
+      <div><a href="{% url 'back' %}?back_url={{ back_url }}">返回</a></div>
+    </div>
+    <br>
+    <br>
+    {% include "mysite/foot.html" %}
+    <!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+    <!-- 可选: 包含 jQuery 库 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+    <script src="https://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        {% if respcode == '0000' %}
+          $("#info").css("background-color","#00ff00");
+        {% endif %}
+      });
+    </script>
+  </body>
+</html>
